@@ -6,20 +6,21 @@ This is proof of concept code for a fast float string conversion using https://g
 
 ```
 $ ruby -v benchmark.rb
-ruby 3.2.0 (2022-12-25 revision a528908271) [arm64-darwin22]
+ruby 3.2.2 (2023-03-30 revision e51014f9c0) [x86_64-linux]
 Warming up --------------------------------------
-               Float   122.360k i/100ms
-     FastFloatString   784.225k i/100ms
+          Float#to_s   247.825k i/100ms
+     FastFloatString     1.052M i/100ms
 Calculating -------------------------------------
-               Float      1.223M (± 0.6%) i/s -      6.118M in   5.003705s
-     FastFloatString      7.890M (± 0.4%) i/s -     39.995M in   5.068963s
+          Float#to_s      2.549M (± 0.7%) i/s -     12.887M in   5.056726s
+     FastFloatString     10.472M (± 0.7%) i/s -     52.611M in   5.024229s
 
 Comparison:
-     FastFloatString:  7890395.4 i/s
-               Float:  1222742.9 i/s - 6.45x  (± 0.00) slower
+     FastFloatString: 10472007.8 i/s
+          Float#to_s:  2548594.9 i/s - 4.11x  slower
 ```
 
-- macOS 13.1
-- Apple M1 Max
-- Apple clang version 14.0.0 (clang-1400.0.29.202)
-- ruby 3.2.0 (2022-12-25 revision a528908271) [arm64-darwin22]
+- OS: Manjaro Linux x86_64
+- Kernel: 6.6.2-1-MANJARO
+- CPU: AMD Ryzen 9 7940HS
+- Compiler: gcc 13.2.1
+- Ruby: ruby 3.2.2 (2023-03-30 revision e51014f9c0) [x86_64-linux]

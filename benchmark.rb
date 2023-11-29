@@ -5,7 +5,7 @@ require 'fast_float_string'
 # p FastFloatString.convert(43.504439999999988)
 
 Benchmark.ips do |x|
-  x.report('Float') { 43.504439999999988.to_s }
+  x.report('Float#to_s') { 43.504439999999988.to_s }
   x.report('FastFloatString') { FastFloatString.convert(43.504439999999988) }
 
   x.compare!
